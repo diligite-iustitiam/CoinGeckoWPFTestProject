@@ -1,4 +1,6 @@
-﻿using CoinGeckoWPFTestProject.ViewModels;
+﻿using CoinGeckoWPFTestProject.Services;
+using CoinGeckoWPFTestProject.Services.Intefraces;
+using CoinGeckoWPFTestProject.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -24,7 +26,7 @@ namespace CoinGeckoWPFTestProject
         protected override async void OnStartup(StartupEventArgs e)
         {
             IsDesignMode = false;
-            var host = Host;
+            var host = Host;                                  
             base.OnStartup(e);
 
             await host.StartAsync().ConfigureAwait(false);
@@ -42,7 +44,7 @@ namespace CoinGeckoWPFTestProject
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.RegisterViewModels();
+            services.RegisterServices().RegisterViewModels();
         }
 
         public static string CurrentDirectory => IsDesignMode

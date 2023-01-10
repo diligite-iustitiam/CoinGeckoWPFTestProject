@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CoinGeckoWPFTestProject.Services.Intefraces
 {
-    internal interface ICurrencyService
+    internal interface ICoinsService
     {
-       IEnumerable<CryptoCurrencies> GetAllCryptoCurrencies();
+        IEnumerable<Coin> GetAllCoins();
     }
 }

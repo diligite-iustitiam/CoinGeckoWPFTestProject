@@ -6,23 +6,24 @@ using System.Threading.Tasks;
 
 namespace CoinGeckoWPFTestProject.Models
 {
-    internal class CryptoCurrencies
+    public class CryptoCurrencies
     {
-        public string? CurrencyID { get; set; }
+        public string? id { get; set; }
+        public string? symbol { get; set; }
 
-        public string? CurrencyName { get; set; }
+        public string? name { get; set; }
 
-        public decimal CurrentPrice { get; set; }
+        public decimal current_price { get; set; }
 
-        public double PriceChange { get; set; }
+        public double price_change_24h { get; set; }
 
-        public decimal TotalVolume { get; set; }
+        public double total_volume { get; set; }
 
-        public double MarketCap { get; set; }
+        public double market_cap { get; set; }
 
-        public int MarketCapRank { get; set; }
+        public int market_cap_rank { get; set; }
 
-        public DateTime? LastUpdate { get; set; }
+        public DateTime? last_updated { get; set; }
 
     }
 }

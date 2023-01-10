@@ -3,8 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:CoinGeckoWPFTestProject"
-        xmlns:vm="clr-namespace:CoinGeckoWPFTestProject.ViewModels"
+        xmlns:vm="clr-namespace:CoinGeckoWPFTestProject.ViewModels" 
+        xmlns:m="clr-namespace:CoinGeckoWPFTestProject.Models"  
+        xmlns:view="clr-namespace:CoinGeckoWPFTestProject.Views.Windows"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}"
@@ -28,6 +31,9 @@
             <StatusBarItem Content="{Binding SelectedPageIndex}"/>
         </StatusBar>
         <TabControl>
+            <TabItem Header="Coins">
+                <view:CoinsView DataContext="{Binding CoinsViewModel}"/>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>

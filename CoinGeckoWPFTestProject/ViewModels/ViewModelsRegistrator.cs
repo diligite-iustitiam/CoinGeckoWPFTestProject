@@ -12,6 +12,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
             services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<CoinsViewModel>();
             return services;
         }
     }
