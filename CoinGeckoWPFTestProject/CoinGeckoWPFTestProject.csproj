@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\p1.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="FontAwesome5" Version="2.1.11" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
@@ -16,6 +20,12 @@
 	<PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	<PackageReference Include="OxyPlot.Wpf" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\p1.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

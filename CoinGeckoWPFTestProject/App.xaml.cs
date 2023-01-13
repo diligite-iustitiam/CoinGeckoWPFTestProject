@@ -1,5 +1,6 @@
 ﻿using CoinGeckoWPFTestProject.Services;
 using CoinGeckoWPFTestProject.Services.Intefraces;
+//using CoinGeckoWPFTestProject.Stores;
 using CoinGeckoWPFTestProject.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,11 +21,13 @@ namespace CoinGeckoWPFTestProject
         public static bool IsDesignMode { get; private set; } = true;
 
         private static IHost __Host;
+       
 
         public static IHost Host => __Host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+            
             IsDesignMode = false;
             var host = Host;                                  
             base.OnStartup(e);

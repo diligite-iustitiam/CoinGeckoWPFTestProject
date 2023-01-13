@@ -13,6 +13,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
         {
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<CoinsViewModel>();
+            services.AddSingleton<ConverterViewModel>();          
             return services;
         }
     }

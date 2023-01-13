@@ -1,6 +1,7 @@
 ﻿using CoinGeckoWPFTestProject.Infrastructure.Commands;
 using CoinGeckoWPFTestProject.Models;
 using CoinGeckoWPFTestProject.Services.Intefraces;
+using CoinGeckoWPFTestProject.Stores;
 using CoinGeckoWPFTestProject.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,9 @@ namespace CoinGeckoWPFTestProject.ViewModels
 {
     internal class MainWindowViewModel : BaseViewModel
     {
+        private readonly NavigationStore _navigation;
         public CoinsViewModel CoinsViewModel { get; }
-       
+       public BaseViewModel CurrentViewModel => _navigation.CurrentViewModel;
         #region ChangeTabIndexCommand
 
         private int _SelectedPageIndex = 1;
@@ -78,12 +80,17 @@ namespace CoinGeckoWPFTestProject.ViewModels
 
 
        
-        public MainWindowViewModel(CoinsViewModel coinsViewModel)
+        public MainWindowViewModel(NavigationStore navigation,CoinsViewModel coinsViewModel)
         {
 
             CoinsViewModel = coinsViewModel;
             coinsViewModel.MainModel = this;
+            _navigation = navigation;
+            _navigation.CurrentViewModel = coinsViewModel;
+            _navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
 
+
+            //CurrentViewModel = coinsViewModel;
             //Coins = _coinsService.GetAllCoins();
             #region Commands           
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
@@ -92,6 +99,9 @@ namespace CoinGeckoWPFTestProject.ViewModels
             //RefreshDataCommand = new LambdaCommand(OnRefreshDataCommandExecuted);
             #endregion
         }
-
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
     }
 }

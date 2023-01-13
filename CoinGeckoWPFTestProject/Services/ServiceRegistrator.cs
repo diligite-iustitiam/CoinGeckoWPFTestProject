@@ -1,4 +1,5 @@
 ﻿using CoinGeckoWPFTestProject.Services.Intefraces;
+using CoinGeckoWPFTestProject.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace CoinGeckoWPFTestProject.Services
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
             services.AddSingleton<ICoinsService, CoinsService>();
+            
+            services.AddSingleton<NavigationStore>();
             return services;
         }
     }

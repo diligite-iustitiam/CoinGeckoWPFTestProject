@@ -6,7 +6,7 @@ using System.Windows.Threading;
 
 namespace CoinGeckoWPFTestProject.ViewModels.Base
 {
-    internal abstract class BaseViewModel : INotifyPropertyChanged, IDisposable
+    public abstract class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

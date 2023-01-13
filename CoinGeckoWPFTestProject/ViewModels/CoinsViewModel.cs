@@ -1,17 +1,22 @@
-﻿using CoinGeckoWPFTestProject.Models;
+﻿using CoinGeckoWPFTestProject.Infrastructure.Commands;
+using CoinGeckoWPFTestProject.Models;
 using CoinGeckoWPFTestProject.Services.Intefraces;
+using CoinGeckoWPFTestProject.Stores;
 using CoinGeckoWPFTestProject.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CoinGeckoWPFTestProject.ViewModels
 {
     internal class CoinsViewModel : BaseViewModel
     {
         private readonly ICoinsService _coinsService;
+        public string Welcome => "Welcome";
+        public ICommand NavigateToConverterCommand { get; }
         public MainWindowViewModel MainModel { get; internal set; }
         #region Coins : IEnumerable<Coins> 
 
@@ -36,10 +41,15 @@ namespace CoinGeckoWPFTestProject.ViewModels
 
         #endregion
 
-        public CoinsViewModel(ICoinsService coinsService)
+        public CoinsViewModel(ICoinsService coinsService, NavigationStore navigation)
         {
+
             _coinsService = coinsService;
             Coins = _coinsService.GetAllCoins();
+
+            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(navigation, () => new ConverterViewModel());
+
+
         }
     }
 }
