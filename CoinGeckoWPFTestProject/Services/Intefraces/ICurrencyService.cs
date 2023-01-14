@@ -9,6 +9,7 @@ namespace CoinGeckoWPFTestProject.Services.Intefraces
 {
     internal interface ICurrencyService
     {
-       IEnumerable<CryptoCurrencies> GetAllCryptoCurrencies();
+        string? Currency { get; set; }
+        IAsyncEnumerable<CryptoCurrency> GetAllCryptoCurrencies();
     }
 }

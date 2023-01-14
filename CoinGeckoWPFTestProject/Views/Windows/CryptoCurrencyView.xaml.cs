@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CoinGeckoWPFTestProject.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for CoinsView.xaml
+    /// Interaction logic for CryptoCurrencyView.xaml
     /// </summary>
-    public partial class CoinsView : UserControl
+    public partial class CryptoCurrencyView : UserControl
     {
-        public CoinsView()
+        public CryptoCurrencyView()
         {
             InitializeComponent();
         }

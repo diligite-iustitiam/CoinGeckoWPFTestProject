@@ -16,7 +16,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
     internal class MainWindowViewModel : BaseViewModel
     {
         private readonly NavigationStore _navigation;
-        public CoinsViewModel CoinsViewModel { get; }
+        public CurrencyViewModel _currencyViewModel { get; }
        public BaseViewModel CurrentViewModel => _navigation.CurrentViewModel;
         #region ChangeTabIndexCommand
 
@@ -55,43 +55,21 @@ namespace CoinGeckoWPFTestProject.ViewModels
         }
         #endregion
 
-        //#region Coins : IEnumerable<Coins> 
-
-
-        //private IEnumerable<Coin> _Coins;
-
-
-        //public IEnumerable<Coin> Coins
-        //{
-        //    get => _Coins;
-        //    private set => Set(ref _Coins, value);
-        //}
-
-        //#endregion
-        //#region SelectedCoin 
-
-
-        //private Coin _SelectedCoin;
-
-
-        //public Coin SelectedCoin { get => _SelectedCoin; set => Set(ref _SelectedCoin, value); }
-
-        //#endregion
+        
 
 
        
-        public MainWindowViewModel(NavigationStore navigation,CoinsViewModel coinsViewModel)
+        public MainWindowViewModel(NavigationStore navigation, CurrencyViewModel currencyViewModel)
         {
 
-            CoinsViewModel = coinsViewModel;
-            coinsViewModel.MainModel = this;
+            _currencyViewModel = currencyViewModel;
+            currencyViewModel.MainModel = this;
             _navigation = navigation;
-            _navigation.CurrentViewModel = coinsViewModel;
+            _navigation.CurrentViewModel = currencyViewModel;
             _navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
 
 
-            //CurrentViewModel = coinsViewModel;
-            //Coins = _coinsService.GetAllCoins();
+            
             #region Commands           
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             ChangeTabIndexCommand = new LambdaCommand(OnChangeTabIndexCommandExecuted, CanChangeTabIndexCommandExecute);

@@ -3,29 +3,50 @@ using CoinGeckoWPFTestProject.Services.Intefraces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CoinGeckoWPFTestProject.Services
 {
     internal class CurrencyService : ICurrencyService
-    {      
-        public async Task<List<CryptoCurrencies>> GetData()
+    {
+        public string? Currency { get; set; }
+        private async Task<IEnumerable<CryptoCurrency>> GetData()
         {
-            using(HttpClient client = new())
+            using (HttpClient _client = new())
             {
-                HttpResponseMessage responseMessage = await client.GetAsync($"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
-                var jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await _client.GetAsync($"https://api.coingecko.com/api/v3/coins/markets?vs_currency={Currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                IEnumerable<CryptoCurrency> coinList = JsonConvert.DeserializeObject<IEnumerable<CryptoCurrency>>(jsonResponse);
 
-                List<CryptoCurrencies> cryptoList = JsonConvert.DeserializeObject<List<CryptoCurrencies>>(jsonResponse);
-
-                return cryptoList;
-
+                return coinList;
             }
         }
-        public IEnumerable<CryptoCurrencies> GetAllCryptoCurrencies()
+
+        public async IAsyncEnumerable<CryptoCurrency> GetAllCryptoCurrencies()
         {
-            throw new System.NotImplementedException();
+            var data = await GetData();
+            foreach (var currency_info in data)
+            {
+                var currency = new CryptoCurrency
+                {
+                    id = currency_info.id,
+                    symbol = currency_info.symbol,
+                    price_change_24h = currency_info.price_change_24h,
+                    current_price = currency_info.current_price,
+                    market_cap = currency_info.market_cap,
+                    market_cap_rank = currency_info.market_cap_rank,
+                    name = currency_info.name,
+                    total_volume = currency_info.total_volume,
+                    last_updated = currency_info.last_updated,
+                };
+                yield return currency;
+            }
         }
 
+        
     }
-}
+    }
+
+
+

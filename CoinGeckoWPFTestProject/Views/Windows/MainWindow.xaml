@@ -14,8 +14,8 @@
         Height="720" Width="1080">
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>
-            <DataTemplate DataType="{x:Type vm:CoinsViewModel}">
-                <view:CoinsView/>
+            <DataTemplate DataType="{x:Type vm:CurrencyViewModel}">
+                <view:CryptoCurrencyView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:ConverterViewModel}">
                 <view:ConverterView/>

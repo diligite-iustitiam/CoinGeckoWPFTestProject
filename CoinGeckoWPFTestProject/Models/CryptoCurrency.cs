@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinGeckoWPFTestProject.Models
 {
-    public class CryptoCurrencies
+    public class CryptoCurrency
     {
         public string? id { get; set; }
         public string? symbol { get; set; }

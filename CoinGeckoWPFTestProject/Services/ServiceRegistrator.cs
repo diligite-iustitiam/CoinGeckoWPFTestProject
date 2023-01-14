@@ -13,8 +13,8 @@ namespace CoinGeckoWPFTestProject.Services
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            services.AddSingleton<ICoinsService, CoinsService>();
             
+            services.AddSingleton<ICurrencyService, CurrencyService>();
             services.AddSingleton<NavigationStore>();
             return services;
         }
