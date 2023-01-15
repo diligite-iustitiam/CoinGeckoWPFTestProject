@@ -40,12 +40,14 @@ namespace CoinGeckoWPFTestProject.Views.Windows
         private void BindCurrency()
 
         {
+            #region values
             decimal BTCValue = 1M;
             decimal ETHValue = 0.0738116M;
             decimal LTCValue = 0.0041806M;
             decimal BCHValue = 0.0059393003504187M;
             decimal BNBValue = 0.0143096318131734M;
             decimal EOSValue = 0.110885516624407e-5M;
+            #endregion
             //Create a Datatable Object
             DataTable dtCurrency = new DataTable();
            
