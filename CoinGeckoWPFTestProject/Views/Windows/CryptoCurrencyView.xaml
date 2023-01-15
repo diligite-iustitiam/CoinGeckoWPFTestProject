@@ -41,9 +41,9 @@
                             </Ellipse>
                         </Border>
                         <!--Menu Titles-->
-                        <TextBlock Text="Silvers Club" Foreground="White" FontSize="22" FontWeight="SemiBold"
+                        <TextBlock Text="All Crypto" Foreground="White" FontSize="22" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-                        <TextBlock Text="Text" Foreground="#d0bfff" FontSize="22" FontWeight="SemiBold"
+                        <TextBlock Text="Crypto Test Project" Foreground="#d0bfff" FontSize="22" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center"/>
 
                         <!--Menu Separator-->
@@ -55,7 +55,7 @@
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="DashBoard"/>
+                                    <TextBlock Text="All Crypto"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -70,24 +70,17 @@
                         <StackPanel DockPanel.Dock="Top">
                             <Button Style="{StaticResource menuButton}" Command="{Binding NavigateToExchangeRateCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="StackExchange" Style="{StaticResource menuButtonIcon}"/>
+                                    <Icon:PackIconMaterial Kind="CashCheck" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="ExchangeRate"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Cash" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="DashBoard"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
 
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+
+                        <Button Style="{StaticResource menuButton}" Command="{Binding CloseApplicationCommand}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
+                                <TextBlock Text="Exit"/>
                             </StackPanel>
                         </Button>
 
@@ -124,27 +117,27 @@
                     <Icon:PackIconMaterial Kind="Bell"/>
                 </Button>
                 <!--Page Title-->
-                <TextBlock Text="Members" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                <TextBlock Text="All Crypto Currencies" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!--Add Button-->
                 <Button Style="{StaticResource addButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
-                        <TextBlock Text="Add New Member"/>
+                        <TextBlock Text="Add New Currency"/>
                     </StackPanel>
                 </Button>
                 <!--Separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
                 <!--Tab Buttons-->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button Content="Club Staff" Style="{StaticResource tabButton}" BorderBrush="#784ff2"/>
-                    <Button Content="Players" Style="{StaticResource tabButton}"/>
-                    <Button Content="Achived" Style="{StaticResource tabButton}"/>
+                    <Button Content="Currencies" Style="{StaticResource tabButton}" BorderBrush="#784ff2"/>
+                    <!--<Button Content="Players" Style="{StaticResource tabButton}"/>
+                    <Button Content="Achived" Style="{StaticResource tabButton}"/>-->
                 </StackPanel>
                 <!--Counter Title-->
                
-                <TextBlock Text="68 Club Staff" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                <TextBlock Text="Number Currency" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
                            Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <TextBlock Text="Filter By" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0"

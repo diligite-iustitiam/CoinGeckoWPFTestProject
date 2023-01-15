@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoinGeckoWPFTestProject.Services;
+using CoinGeckoWPFTestProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,10 +24,11 @@ namespace CoinGeckoWPFTestProject.Views.Windows
     /// </summary>
     public partial class ConverterView : UserControl
     {
+        ExchangeRateViewModel Exchange { get; }
         public ConverterView()
-        {
+        {          
             InitializeComponent();
-
+            
             //ClearControls method is used to clear all control values
             ClearControls();
 
@@ -37,9 +40,15 @@ namespace CoinGeckoWPFTestProject.Views.Windows
         private void BindCurrency()
 
         {
+            decimal BTCValue = 1M;
+            decimal ETHValue = 0.0738116M;
+            decimal LTCValue = 0.0041806M;
+            decimal BCHValue = 0.0059393003504187M;
+            decimal BNBValue = 0.0143096318131734M;
+            decimal EOSValue = 0.110885516624407e-5M;
             //Create a Datatable Object
             DataTable dtCurrency = new DataTable();
-
+           
             //Add the text column in the DataTable
             dtCurrency.Columns.Add("Text");
 
@@ -48,12 +57,12 @@ namespace CoinGeckoWPFTestProject.Views.Windows
 
             //Add rows in the Datatable with text and value
             dtCurrency.Rows.Add("--SELECT--", 0);
-            dtCurrency.Rows.Add("DOT", 1);
-            dtCurrency.Rows.Add("BTC", 3500);
-            dtCurrency.Rows.Add("ETH", 258);
-            dtCurrency.Rows.Add("BNB", 20);
-            dtCurrency.Rows.Add("POUND", 5);
-            dtCurrency.Rows.Add("DEM", 43);
+            dtCurrency.Rows.Add("BTC", BTCValue);
+            dtCurrency.Rows.Add("ETH", ETHValue);
+            dtCurrency.Rows.Add("LTC", LTCValue);
+            dtCurrency.Rows.Add("BCH", BCHValue);
+            dtCurrency.Rows.Add("BNB", BNBValue);
+            dtCurrency.Rows.Add("EOS", EOSValue);
 
             //Datatable data assigned from the currency combobox
             cmbFromCurrency.ItemsSource = dtCurrency.DefaultView;
@@ -81,7 +90,7 @@ namespace CoinGeckoWPFTestProject.Views.Windows
         private void Convert_Click(object sender, RoutedEventArgs e)
         {
             //Create the variable as ConvertedValue with double datatype to store currency converted value
-            double ConvertedValue;
+            decimal ConvertedValue;
 
             //Check if the amount textbox is Null or Blank
             if (txtCurrency.Text == null || txtCurrency.Text.Trim() == "")
@@ -112,6 +121,7 @@ namespace CoinGeckoWPFTestProject.Views.Windows
                 cmbToCurrency.Focus();
                 return;
             }
+           
 
             //Check if From and To Combobox selected values are same
             if (cmbFromCurrency.Text == cmbToCurrency.Text)
@@ -119,7 +129,7 @@ namespace CoinGeckoWPFTestProject.Views.Windows
                 //Amount textbox value set in ConvertedValue.
                 //double.parse is used for converting the datatype String To Double.
                 //Textbox text have string and ConvertedValue is double Datatype
-                ConvertedValue = double.Parse(txtCurrency.Text);
+                ConvertedValue = decimal.Parse(txtCurrency.Text);
 
                 //Show the label converted currency and converted currency name and ToString("N3") is used to place 000 after the dot(.)
                 lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
@@ -128,8 +138,21 @@ namespace CoinGeckoWPFTestProject.Views.Windows
             {
                 //Calculation for currency converter is From Currency value multiply(*) 
                 //With the amount textbox value and then that total divided(/) with To Currency value
-                ConvertedValue = (double.Parse(cmbFromCurrency.SelectedValue.ToString()) * double.Parse(txtCurrency.Text)) / double.Parse(cmbToCurrency.SelectedValue.ToString());
+                checked
+                {
+                    try
+                    {
+                        ConvertedValue = (decimal.Parse(cmbFromCurrency.SelectedValue.ToString()) * decimal.Parse(txtCurrency.Text)) / decimal.Parse(cmbToCurrency.SelectedValue.ToString());
+                    }
+                    catch(OverflowException)
+                    {
+                        MessageBox.Show("Currency is too big, please select smaller number", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                        //Set focus on the To Combobox
+                        cmbToCurrency.Focus();
+                        return;
+                    }
+                }
                 //Show the label converted currency and converted currency name.
                 lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");
             }

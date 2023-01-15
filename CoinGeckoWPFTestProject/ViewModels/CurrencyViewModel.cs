@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -39,8 +40,16 @@ namespace CoinGeckoWPFTestProject.ViewModels
             }
         }
         #endregion
-   
 
+        #region CloseApplicationCommand
+        public ICommand CloseApplicationCommand { get; }
+
+        private bool CanCloseApplicationCommandExecute(object p) => true;
+        private void OnCloseApplicationCommandExecuted(object p)
+        {
+            Application.Current.Shutdown();
+        }
+        #endregion
         #region CryptoCurrencies : IEnumerable<CryptoCurrencies> 
 
 
@@ -90,7 +99,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
             CryptoCollectionView.SortDescriptions.Add(new SortDescription(nameof(CryptoCurrency.market_cap_rank), ListSortDirection.Ascending));
             NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation));
             NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRate(),navigation));
-
+            CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
         }
         private bool FilterCrypto(object obj)

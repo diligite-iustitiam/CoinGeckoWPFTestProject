@@ -52,10 +52,10 @@
                         <!--Menu BUttons-->
 
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Command="{Binding NavigateToAllCurrencyCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="DashBoard"/>
+                                    <TextBlock Text="All Crypto"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -71,23 +71,15 @@
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Creation" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="DashBoard"/>
+                                    <TextBlock Text="CashCheck"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Cash" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="DashBoard"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                      
+                        <Button Style="{StaticResource menuButton}" Command="{Binding CloseApplicationCommand}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
+                                <TextBlock Text="Exit"/>
                             </StackPanel>
                         </Button>
 
@@ -124,27 +116,27 @@
                     <Icon:PackIconMaterial Kind="Bell"/>
                 </Button>
                 <!--Page Title-->
-                <TextBlock Text="Members" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                <TextBlock Text="All Exchanges" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!--Add Button-->
                 <Button Style="{StaticResource addButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
-                        <TextBlock Text="Add New Member"/>
+                        <TextBlock Text="Add New Exchange"/>
                     </StackPanel>
                 </Button>
                 <!--Separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
                 <!--Tab Buttons-->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button Content="Club Staff" Style="{StaticResource tabButton}" BorderBrush="#784ff2"/>
-                    <Button Content="Players" Style="{StaticResource tabButton}"/>
-                    <Button Content="Achived" Style="{StaticResource tabButton}"/>
+                    <Button Content="BTC to -" Style="{StaticResource tabButton}" BorderBrush="#784ff2"/>
+                    <!--<Button Content="Players" Style="{StaticResource tabButton}"/>
+                    <Button Content="Achived" Style="{StaticResource tabButton}"/>-->
                 </StackPanel>
                 <!--Counter Title-->
 
-                <TextBlock Text="68 Club Staff" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                <TextBlock Text="Crypto Info" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
                            Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <TextBlock Text="Filter By" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0"
@@ -170,13 +162,10 @@
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding name}"/>
-  
-                      
-
-                        <DataGridTextColumn Header="value" IsReadOnly="True" Width="*" Binding="{Binding value}"/>
-                        <DataGridTextColumn Header="Symbol" IsReadOnly="True" Width="*" Binding="{Binding unit}"/>
-                        <DataGridTextColumn SortDirection="Ascending" Header="CapRank" IsReadOnly="True" Width="*" Binding="{Binding market_cap_rank}"/>
+                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="Unit" IsReadOnly="True" Width="*" Binding="{Binding unit}"/>
+                        <DataGridTextColumn Header="Value" IsReadOnly="True" Width="*" Binding="{Binding value}"/>
+                        <DataGridTextColumn Header="Type" IsReadOnly="True" Width="*" Binding="{Binding type}"/>
 
 
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
