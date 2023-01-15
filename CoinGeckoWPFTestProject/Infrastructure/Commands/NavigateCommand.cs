@@ -1,4 +1,5 @@
 ﻿using CoinGeckoWPFTestProject.Infrastructure.Commands.Base;
+using CoinGeckoWPFTestProject.Services;
 using CoinGeckoWPFTestProject.Stores;
 using CoinGeckoWPFTestProject.ViewModels.Base;
 using System;
@@ -12,13 +13,11 @@ namespace CoinGeckoWPFTestProject.Infrastructure.Commands
     public class NavigateCommand<TViewModel> : Command
         where TViewModel : BaseViewModel
     {
-        private readonly NavigationStore _navigation;
-        private readonly Func<TViewModel> _viewModel;    
+        private readonly NavigationService<TViewModel> _navigationService;
 
-        public NavigateCommand(NavigationStore navigation,Func<TViewModel> viewModel)
+        public NavigateCommand(NavigationService<TViewModel> navigationService)
         {
-            _navigation = navigation;
-            _viewModel = viewModel;
+           _navigationService = navigationService;
         }
 
         public override bool CanExecute(object? parameter) => true;
@@ -26,7 +25,7 @@ namespace CoinGeckoWPFTestProject.Infrastructure.Commands
 
         public override void Execute(object? parameter)
         {
-            _navigation.CurrentViewModel = _viewModel();
+            _navigationService.Navigate();
         }
     }
 }

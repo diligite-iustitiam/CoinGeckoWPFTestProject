@@ -15,7 +15,7 @@ namespace CoinGeckoWPFTestProject.Services
         {
             
             services.AddSingleton<ICurrencyService, CurrencyService>();
-            services.AddSingleton<IExchangeRate, ExchangeRate>();
+            services.AddSingleton<IExchangeRate, ExchangeRateService>();
             services.AddSingleton<NavigationStore>();
             return services;
         }

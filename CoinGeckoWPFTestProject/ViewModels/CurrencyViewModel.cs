@@ -97,8 +97,8 @@ namespace CoinGeckoWPFTestProject.ViewModels
             CryptoCollectionView = CollectionViewSource.GetDefaultView(ItemsSourceForDataGrid);
             CryptoCollectionView.Filter = FilterCrypto;
             CryptoCollectionView.SortDescriptions.Add(new SortDescription(nameof(CryptoCurrency.market_cap_rank), ListSortDirection.Ascending));
-            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation));
-            NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRate(),navigation));
+            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(new NavigationService<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation)));
+            NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(new NavigationService<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRateService(), navigation)));
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
         }

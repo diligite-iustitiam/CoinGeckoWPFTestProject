@@ -16,7 +16,6 @@ namespace CoinGeckoWPFTestProject.ViewModels
     public class ConverterViewModel : BaseViewModel
     {
 
-        private readonly NavigationStore _navigation;
         public ICommand NavigateToExchangeRateCommand { get; }
         public ICommand NavigateToAllCurrencyCommand { get; }
 
@@ -31,10 +30,8 @@ namespace CoinGeckoWPFTestProject.ViewModels
         #endregion
         public ConverterViewModel(NavigationStore navigation)
         {
-            _navigation = navigation;
-            NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRate(), navigation));
-            NavigateToAllCurrencyCommand = new NavigateCommand<CurrencyViewModel>(new NavigationStore(),()=> new CurrencyViewModel(new CurrencyService(),navigation));
-
+            NavigateToAllCurrencyCommand = new NavigateCommand<CurrencyViewModel>(new NavigationService<CurrencyViewModel>(navigation, () => new CurrencyViewModel(new CurrencyService(), navigation)));
+            NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(new NavigationService<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRateService(), navigation)));
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
         }
     }

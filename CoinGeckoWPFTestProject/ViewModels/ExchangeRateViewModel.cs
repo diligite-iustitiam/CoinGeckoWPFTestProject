@@ -24,6 +24,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
         public ObservableCollection<Btc> Btcs { get; }
         public ICollectionView ExchangeRateCollectionView { get; }
         public ICommand NavigateToAllCurrencyCommand { get; }
+        public ICommand NavigateToConverterCommand { get; }
         private async Task AddRootMember(Task<Btc> btc)
         {
             Btc btc1 = await _exchangeRate.GetBitcoin();
@@ -60,7 +61,8 @@ namespace CoinGeckoWPFTestProject.ViewModels
             Btcs = new ObservableCollection<Btc>();
             AddRootMember(Btc);
             ExchangeRateCollectionView = CollectionViewSource.GetDefaultView(Btcs);
-            NavigateToAllCurrencyCommand = new NavigateCommand<CurrencyViewModel>(new NavigationStore(), () => new CurrencyViewModel(new CurrencyService(), navigation));
+            NavigateToAllCurrencyCommand = new NavigateCommand<CurrencyViewModel>(new NavigationService<CurrencyViewModel>(navigation, () => new CurrencyViewModel(new CurrencyService(), navigation)));
+            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(new NavigationService<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation)));
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
         }
     }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CoinGeckoWPFTestProject.Services
 {
-    public class ExchangeRate : IExchangeRate
+    public class ExchangeRateService : IExchangeRate
     {
         private const string data_url = @"https://api.coingecko.com/api/v3/exchange_rates";
         public async Task<Root> GetExchangeRate()

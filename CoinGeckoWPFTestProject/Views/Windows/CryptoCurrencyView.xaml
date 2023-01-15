@@ -180,6 +180,7 @@
 
                         <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
                         <DataGridTextColumn Header="Symbol" IsReadOnly="True" Width="*" Binding="{Binding symbol}"/>
+                        <DataGridTextColumn Header="Current Price" IsReadOnly="True" Width="*" Binding="{Binding current_price}"/>
                         <DataGridTextColumn SortDirection="Ascending" Header="CapRank" IsReadOnly="True" Width="*" Binding="{Binding market_cap_rank}"/>
 
 

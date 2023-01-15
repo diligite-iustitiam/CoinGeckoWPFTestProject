@@ -41,9 +41,9 @@
                             </Ellipse>
                         </Border>
                         <!--Menu Titles-->
-                        <TextBlock Text="Silvers Club" Foreground="White" FontSize="22" FontWeight="SemiBold"
+                        <TextBlock Text="CoinGecko" Foreground="White" FontSize="22" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-                        <TextBlock Text="Text" Foreground="#d0bfff" FontSize="22" FontWeight="SemiBold"
+                        <TextBlock Text="Crypto Test Project" Foreground="#d0bfff" FontSize="22" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center"/>
 
                         <!--Menu Separator-->
@@ -70,8 +70,8 @@
                         <StackPanel DockPanel.Dock="Top">
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Creation" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="CashCheck"/>
+                                    <Icon:PackIconMaterial Kind="CashCheck" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Exchange"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
