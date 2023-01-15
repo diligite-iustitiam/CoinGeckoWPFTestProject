@@ -14,6 +14,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
             services.AddSingleton<MainWindowViewModel>();           
             services.AddSingleton<ConverterViewModel>();
             services.AddSingleton<CurrencyViewModel>();
+            services.AddSingleton<ExchangeRateViewModel>();
             return services;
         }
     }

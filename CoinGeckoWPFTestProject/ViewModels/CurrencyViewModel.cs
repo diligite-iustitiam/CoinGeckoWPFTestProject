@@ -1,5 +1,6 @@
 ﻿using CoinGeckoWPFTestProject.Infrastructure.Commands;
 using CoinGeckoWPFTestProject.Models;
+using CoinGeckoWPFTestProject.Services;
 using CoinGeckoWPFTestProject.Services.Intefraces;
 using CoinGeckoWPFTestProject.Stores;
 using CoinGeckoWPFTestProject.ViewModels.Base;
@@ -22,7 +23,8 @@ namespace CoinGeckoWPFTestProject.ViewModels
         private readonly CollectionViewSource _SelectedCrypto = new CollectionViewSource();
         public ICollectionView CryptoCollectionView { get; }
         public ICommand NavigateToConverterCommand { get; }
-        
+        public ICommand NavigateToExchangeRateCommand { get; }
+
 
         #region ObservableCollection<CryptoCurrency> ItemsSourceForDataGrid
         public ObservableCollection<CryptoCurrency> ItemsSourceForDataGrid { get; }
@@ -86,7 +88,8 @@ namespace CoinGeckoWPFTestProject.ViewModels
             CryptoCollectionView = CollectionViewSource.GetDefaultView(ItemsSourceForDataGrid);
             CryptoCollectionView.Filter = FilterCrypto;
             CryptoCollectionView.SortDescriptions.Add(new SortDescription(nameof(CryptoCurrency.market_cap_rank), ListSortDirection.Ascending));
-            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(navigation, () => new ConverterViewModel());
+            NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation));
+            NavigateToExchangeRateCommand = new NavigateCommand<ExchangeRateViewModel>(navigation, () => new ExchangeRateViewModel(new ExchangeRate(),navigation));
 
 
         }

@@ -20,6 +20,11 @@
             <DataTemplate DataType="{x:Type vm:ConverterViewModel}">
                 <view:ConverterView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ExchangeRateViewModel}">
+                <view:ExchangeRateView/>
+            </DataTemplate>
+            
+            
         </ContentControl.Resources>
     </ContentControl>
 </Window>

@@ -1,5 +1,5 @@
-﻿<UserControl x:Class="CoinGeckoWPFTestProject.Views.Windows.CryptoCurrencyView"
-              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="CoinGeckoWPFTestProject.Views.Windows.ExchangeRateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -68,10 +68,10 @@
                             </Button>
                         </StackPanel>
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" Command="{Binding NavigateToExchangeRateCommand}">
+                            <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="StackExchange" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="ExchangeRate"/>
+                                    <Icon:PackIconMaterial Kind="Creation" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="DashBoard"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -143,7 +143,7 @@
                     <Button Content="Achived" Style="{StaticResource tabButton}"/>
                 </StackPanel>
                 <!--Counter Title-->
-               
+
                 <TextBlock Text="68 Club Staff" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
                            Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
@@ -160,33 +160,22 @@
                 </Grid>
 
                 <!--Members DataGrid-->
-                <DataGrid ItemsSource="{Binding CryptoCollectionView }" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="membersDataGrid">
+                <DataGrid ItemsSource="{Binding ExchangeRateCollectionView}" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="membersDataGrid">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
                             <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate DataType="m:CryptoCurrencies">
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
+                                <DataTemplate DataType="m:Btc">
+                                    <TextBlock Text="{Binding value}"/>
                                 </DataTemplate>
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding id}"/>
+                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding name}"/>
+  
+                      
 
-                        <!--<DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#ffffff"/>
-                                        </Border>
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>-->
-
-                        <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
-                        <DataGridTextColumn Header="Symbol" IsReadOnly="True" Width="*" Binding="{Binding symbol}"/>
+                        <DataGridTextColumn Header="value" IsReadOnly="True" Width="*" Binding="{Binding value}"/>
+                        <DataGridTextColumn Header="Symbol" IsReadOnly="True" Width="*" Binding="{Binding unit}"/>
                         <DataGridTextColumn SortDirection="Ascending" Header="CapRank" IsReadOnly="True" Width="*" Binding="{Binding market_cap_rank}"/>
 
 
