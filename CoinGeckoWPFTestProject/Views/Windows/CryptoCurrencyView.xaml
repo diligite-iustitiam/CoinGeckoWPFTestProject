@@ -73,7 +73,7 @@
                             <Button Style="{StaticResource menuButton}" Command="{Binding NavigateToExchangeRateCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CashCheck" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="ExchangeRate"/>
+                                    <TextBlock Text="Exchange"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -118,7 +118,7 @@
                 </StackPanel>
                 <!--Counter Title-->
                
-                <TextBlock Text="Number Currency" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                <TextBlock Text="Top of 100 Currencies" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
                            Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <TextBlock Text="Filter By" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0"

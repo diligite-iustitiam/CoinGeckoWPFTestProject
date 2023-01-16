@@ -20,16 +20,20 @@ namespace CoinGeckoWPFTestProject.ViewModels
     public class ExchangeRateViewModel : BaseViewModel
     {
         private readonly IExchangeRate _exchangeRate;
-        private readonly NavigationStore _navigation;
-        public ObservableCollection<Btc> Btcs { get; }
-        public ICollectionView ExchangeRateCollectionView { get; }
+        private readonly NavigationStore _navigation;      
         public ICommand NavigateToAllCurrencyCommand { get; }
         public ICommand NavigateToConverterCommand { get; }
+
+        #region ObservableCollection<Btc> Btcs
+        public ObservableCollection<Btc> Btcs { get; }
+        public ICollectionView ExchangeRateCollectionView { get; }
         private async Task AddRootMember(Task<Btc> btc)
         {
             Btc btc1 = await _exchangeRate.GetBitcoin();
             this.Btcs.Add(btc1);
         }
+        #endregion
+
         #region CloseApplicationCommand
         public ICommand CloseApplicationCommand { get; }
 
@@ -39,6 +43,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
             Application.Current.Shutdown();
         }
         #endregion
+
         #region GetBitcoin : Task<Btc> 
 
 
@@ -52,6 +57,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
         }
 
         #endregion
+
         public ExchangeRateViewModel(IExchangeRate exchangeRate, NavigationStore navigation)
         {
             
