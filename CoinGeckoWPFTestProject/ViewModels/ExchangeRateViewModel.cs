@@ -19,7 +19,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
 {
     public class ExchangeRateViewModel : BaseViewModel
     {
-        private readonly IExchangeRate _exchangeRate;
+        private readonly IExchangeRateService _exchangeRate;
         private readonly NavigationStore _navigation;      
         public ICommand NavigateToAllCurrencyCommand { get; }
         public ICommand NavigateToConverterCommand { get; }
@@ -58,7 +58,7 @@ namespace CoinGeckoWPFTestProject.ViewModels
 
         #endregion
 
-        public ExchangeRateViewModel(IExchangeRate exchangeRate, NavigationStore navigation)
+        public ExchangeRateViewModel(IExchangeRateService exchangeRate, NavigationStore navigation)
         {
             
             _exchangeRate = exchangeRate;

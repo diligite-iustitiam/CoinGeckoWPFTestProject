@@ -1,4 +1,5 @@
 ﻿using CoinGeckoWPFTestProject.Services;
+using CoinGeckoWPFTestProject.Services.Intefraces;
 using CoinGeckoWPFTestProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,7 @@ namespace CoinGeckoWPFTestProject.Views.Windows
     /// Interaction logic for ConverterView.xaml
     /// </summary>
     public partial class ConverterView : UserControl
-    {
-        ExchangeRateViewModel Exchange { get; }
+    {       
         public ConverterView()
         {          
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace CoinGeckoWPFTestProject.Views.Windows
         #region Bind Currency From and To Combobox
         private void BindCurrency()
 
-        {
+        {          
             #region values
             decimal BTCValue = 1M;
             decimal ETHValue = 0.0738116M;

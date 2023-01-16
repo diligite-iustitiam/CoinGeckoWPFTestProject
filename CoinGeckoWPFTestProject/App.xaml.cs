@@ -20,8 +20,7 @@ namespace CoinGeckoWPFTestProject
     {
         public static bool IsDesignMode { get; private set; } = true;
 
-        private static IHost __Host;
-       
+        private static IHost __Host;     
 
         public static IHost Host => __Host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
