@@ -61,9 +61,11 @@ namespace CoinGeckoWPFTestProject.ViewModels
             Btcs = new ObservableCollection<Btc>();
             AddRootMember(Btc);
             ExchangeRateCollectionView = CollectionViewSource.GetDefaultView(Btcs);
+            #region Commands
             NavigateToAllCurrencyCommand = new NavigateCommand<CurrencyViewModel>(new NavigationService<CurrencyViewModel>(navigation, () => new CurrencyViewModel(new CurrencyService(), navigation)));
             NavigateToConverterCommand = new NavigateCommand<ConverterViewModel>(new NavigationService<ConverterViewModel>(navigation, () => new ConverterViewModel(navigation)));
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            #endregion
         }
     }
 }
